@@ -1,7 +1,7 @@
 {
   "parser": "@typescript-eslint/parser",
   "plugins": ["react", "@typescript-eslint", "prettier"],
-  "extends": ["prettier"],
+  "extends": ["prettier", "plugin:react-hooks/recommended"],
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module",
@@ -18,7 +18,12 @@
     ],
     "react/react-in-jsx-scope": "off",
     "comma-dangle": "off",
-    "use-isnan": ["error", { "enforceForSwitchCase": true }],
+    "use-isnan": [
+      "error",
+      {
+        "enforceForSwitchCase": true
+      }
+    ],
     "react/void-dom-elements-no-children": "warn",
     "react/no-unsafe": "warn",
     "react/no-unused-state": "warn",
@@ -30,8 +35,18 @@
     "react/no-redundant-should-component-update": "warn",
     "react/jsx-boolean-value": ["warn", "never"],
     "react/jsx-key": "warn",
-    "react/jsx-max-props-per-line": ["warn", { "maximum": 7 }],
-    "react/jsx-max-depth": ["warn", { "max": 8 }],
+    "react/jsx-max-props-per-line": [
+      "warn",
+      {
+        "maximum": 7
+      }
+    ],
+    "react/jsx-max-depth": [
+      "warn",
+      {
+        "max": 8
+      }
+    ],
     "arrow-body-style": ["warn", "as-needed"],
     "dot-notation": "warn",
     "jsx-quotes": ["warn", "prefer-single"],
@@ -62,6 +77,11 @@
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
     }
   }
 }

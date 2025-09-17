@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC, useMemo } from 'react';
 import { OrderStatusProps } from './type';
 import { OrderStatusUI } from '@ui';
 
@@ -9,17 +9,16 @@ const statusText: { [key: string]: string } = {
 };
 
 export const OrderStatus: FC<OrderStatusProps> = ({ status }) => {
-  let textStyle = '';
-  switch (status) {
-    case 'pending':
-      textStyle = '#E52B1A';
-      break;
-    case 'done':
-      textStyle = '#00CCCC';
-      break;
-    default:
-      textStyle = '#F2F2F3';
-  }
+  const textStyle = useMemo(() => {
+    switch (status) {
+      case 'pending':
+        return '#E52B1A';
+      case 'done':
+        return '#00CCCC';
+      default:
+        return '#F2F2F3';
+    }
+  }, [status]);
 
-  return <OrderStatusUI textStyle={textStyle} text={statusText[textStyle]} />;
+  return <OrderStatusUI textStyle={textStyle} text={statusText[status]} />;
 };
